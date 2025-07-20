@@ -2,6 +2,7 @@ import { db } from "@/utils/utilities.js";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function postsId({ params }) {
   const slug = await params;
@@ -71,6 +72,9 @@ export default async function postsId({ params }) {
               />
               <button type="submit">Delete Post</button>
             </form>
+          </div>
+          <div>
+            <Link href={`/posts/${slug.id}/edit`}>Edit Post</Link>
           </div>
           <div>
             <form
