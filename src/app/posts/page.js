@@ -16,7 +16,9 @@ export default async function Posts({ searchParams }) {
   return (
     <div>
       <div>
-        <button className="bg-pink-700">Create post</button>
+        <button className="bg-pink-700">
+          <Link href={"/create"}>Create post</Link>
+        </button>
       </div>
       <div>
         <p>Sort by:</p>
