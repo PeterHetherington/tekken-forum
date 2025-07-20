@@ -45,11 +45,11 @@ export default async function postsId({ params }) {
   }
 
   return (
-    <>
+    <div className="p-2 flex ">
       {posts.length > 0 ? (
         <div className="flex flex-col gap-2">
-          <div className="bg-gray-500 p-2 rounded-2xl">
-            <h2>{posts[0].title}</h2>
+          <div className="bg-gray-800 p-2 rounded-2xl">
+            <h2 className="py-3 text-center text-xl">{posts[0].title}</h2>
             <div>
               <Image
                 src={posts[0].img}
@@ -58,23 +58,35 @@ export default async function postsId({ params }) {
                 alt={posts[0].title}
               />
             </div>
-            <div className="bg-gray-700 p-2 rounded-b-2xl">
+            <div className="bg-gray-700 p-3 rounded-b-2xl">
               <p>{posts[0].content}</p>
             </div>
           </div>
-          <div>
-            <form action={handleDelete}>
-              <input
-                type="hidden"
-                name="idForDelete"
-                id="idForDelete"
-                value={slug.id}
-              />
-              <button type="submit">Delete Post</button>
-            </form>
-          </div>
-          <div>
-            <Link href={`/posts/${slug.id}/edit`}>Edit Post</Link>
+          <div className="flex content-center justify-around">
+            <div>
+              <form action={handleDelete} className="flex">
+                <input
+                  type="hidden"
+                  name="idForDelete"
+                  id="idForDelete"
+                  value={slug.id}
+                />
+                <button
+                  type="submit"
+                  className="flex border border-pink-700 bg-gray-700 p-2 w-30"
+                >
+                  Delete Post
+                </button>
+              </form>
+            </div>
+            <div className="flex">
+              <Link
+                href={`/posts/${slug.id}/edit`}
+                className="border border-pink-700 bg-gray-700 p-2 w-30"
+              >
+                Edit Post
+              </Link>
+            </div>
           </div>
           <div>
             <form
@@ -82,7 +94,7 @@ export default async function postsId({ params }) {
               className="flex flex-col justify-center p-3 gap-1.5"
             >
               <input
-                className="bg-gray-500 rounded-xl p-1"
+                className="bg-gray-700 rounded-xl p-1"
                 id="username"
                 name="username"
                 type="text"
@@ -90,7 +102,7 @@ export default async function postsId({ params }) {
                 placeholder="Username"
               ></input>
               <input
-                className="bg-gray-500 rounded-xl p-1"
+                className="bg-gray-700 rounded-xl p-1"
                 id="comment"
                 name="comment"
                 type="text"
@@ -103,7 +115,12 @@ export default async function postsId({ params }) {
                 type="hidden"
                 value={slug.id}
               ></input>
-              <button type="submit">Post</button>
+              <button
+                type="submit"
+                className="bg-pink-700 self-center p-2 w-40"
+              >
+                Post comment
+              </button>
             </form>
           </div>
           {/* conditionally load comments if there are any */}
@@ -126,6 +143,6 @@ export default async function postsId({ params }) {
       ) : (
         <p>Loading...</p>
       )}
-    </>
+    </div>
   );
 }

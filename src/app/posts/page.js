@@ -1,5 +1,4 @@
 import { db } from "@/utils/utilities.js";
-import Image from "next/image";
 import fallback from "../../../public/tekken-fallback.jpg";
 import PostCard from "@/components/PostCard";
 import Link from "next/link";
@@ -22,19 +21,24 @@ export default async function Posts({ searchParams }) {
   }
 
   return (
-    <div>
-      <div>
-        <button className="bg-pink-700">
-          <Link href={"/create"}>Create post</Link>
-        </button>
-      </div>
-      <div>
-        <p>Sort by:</p>
-        <Link href={"/posts?sortBy=newest"}>Newest</Link>
-        <Link href={"/posts?sortBy=oldest"}>Oldest</Link>
+    <div className="px-3">
+      <div className="flex space-x-4 pt-3">
+        <p className="self-center">Sort by:</p>
+        <Link
+          href={"/posts?sortBy=newest"}
+          className="bg-gray-800 p-2 rounded-2xl w-18 text-center"
+        >
+          Newest
+        </Link>
+        <Link
+          href={"/posts?sortBy=oldest"}
+          className="bg-gray-800 p-2 rounded-2xl w-18 text-center"
+        >
+          Oldest
+        </Link>
       </div>
       <Filter categories={categories}></Filter>
-      <div>
+      <div className="flex flex-col py-3 px-1 gap-2">
         {posts.map((post) => (
           <PostCard
             key={post.id}
