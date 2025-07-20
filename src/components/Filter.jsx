@@ -26,10 +26,12 @@ export default function Filter({ categories, children }) {
 
   return (
     <div>
-      <form>
+      <form className="flex flex-row space-x-1.5 py-4">
         <label htmlFor="filter">Filter by:</label>
-        <select className="filter" onChange={handleChange}>
-          <option value={""}>All</option>
+        <select onChange={handleChange} className="border">
+          <option value={""} className="bg-black/40">
+            All
+          </option>
           {categories.map((category) => (
             <option
               className="bg-black/40"
