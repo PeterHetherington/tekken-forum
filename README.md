@@ -51,7 +51,7 @@ Deployment:
 
 ```
 git clone git@github.com:PeterHetherington/tekken-forum.git
-cd combo-drop
+cd tekken-forum
 ```
 
 2. Install dependencies
