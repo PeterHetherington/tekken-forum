@@ -1,6 +1,6 @@
 import { db } from "@/utils/utilities.js";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,6 +12,10 @@ export default async function postsId({ params }) {
       [slug.id]
     )
   ).rows;
+
+  if (posts.length == 0) {
+    notFound();
+  }
 
   async function handleComment(formData) {
     "use server";
